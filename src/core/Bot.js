@@ -53,9 +53,11 @@ export class Bot {
 
     adminCommands.forEach((item) => this.vk.updates.on('message_new', item.middleware))
 
-    this.vk.updates.on('message_new', testMiddleware.middleware)
-
     callbacks.forEach((item) => this.vk.updates.on('message_event', item.middleware))
+
+    // default answer
+    this.vk.updates.on('message_new', testMiddleware.middleware)
+    //
 
     return this.vk.updates.start()
   }
